@@ -95,12 +95,8 @@ const handleTransition = (
 
   const moving = new Set(
     prevKeys.filter((key, i) => {
-      if (entering.has(key)) {
-        return false;
-      }
-
-      const nextIndex = nextKeys.indexOf(key);
-      return nextIndex !== -1 && i !== nextIndex;
+      // if it's not entering or leaving
+      return !entering.has(key) || leaving.indexOf(key) === -1;
     })
   );
 
@@ -132,7 +128,7 @@ const handleTransition = (
       ? React.cloneElement(child, {
           _pose: exitPose,
           onPoseComplete: (pose: CurrentPose) => {
-            scheduleChildRemoval(key);
+            if (pose === exitPose) scheduleChildRemoval(key);
 
             const { onPoseComplete } = child.props;
             if (onPoseComplete) onPoseComplete(pose);
