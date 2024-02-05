@@ -1,39 +1,11 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "es6",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "noUnusedLocals": true,
-    "target": "ES6",
-    "watch": false,
-    "baseUrl": "./packages",
-    "importHelpers": true,
-    "paths": {
-      "framesync": [
-        "./framesync/lib"
-      ],
-      "popmotion": [
-        "./popmotion/lib"
-      ],
-      "style-value-types": [
-        "./style-value-types/lib"
-      ]
-    },
-    "alwaysStrict": true,
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": [
-      "es5",
-      "es6",
-      "dom"
-    ],
-    "skipLibCheck": true
+    "rootDir": "src",
+    "outDir": "lib",
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "typeRoots": ["./types", "../../node_modules/@types"]
   },
-  "exclude": [
-    "**/*.test.ts"
-  ]
+  "include": ["src/**/*"]
 }
